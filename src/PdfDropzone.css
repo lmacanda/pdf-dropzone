@@ -1,0 +1,195 @@
+/*
+ * PdfDropzone styles — override the custom properties below to theme it.
+ */
+.pdz {
+  --pdz-accent: #4f46e5;
+  --pdz-accent-soft: #eef2ff;
+  --pdz-border: #d4d4d8;
+  --pdz-text: #18181b;
+  --pdz-muted: #71717a;
+  --pdz-error: #dc2626;
+  --pdz-error-soft: #fef2f2;
+  --pdz-bg: #ffffff;
+  --pdz-radius: 12px;
+
+  font-family: inherit;
+  color: var(--pdz-text);
+  width: 100%;
+}
+
+.pdz__input {
+  display: none;
+}
+
+/* Drop zone */
+.pdz__zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 36px 24px;
+  border: 2px dashed var(--pdz-border);
+  border-radius: var(--pdz-radius);
+  background: var(--pdz-bg);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.pdz__zone:hover {
+  border-color: var(--pdz-accent);
+}
+
+.pdz__zone:focus-visible {
+  outline: 3px solid var(--pdz-accent);
+  outline-offset: 2px;
+}
+
+.pdz--dragging .pdz__zone {
+  border-color: var(--pdz-accent);
+  border-style: solid;
+  background: var(--pdz-accent-soft);
+}
+
+.pdz--error .pdz__zone,
+.pdz--error .pdz__file {
+  border-color: var(--pdz-error);
+}
+
+.pdz--disabled .pdz__zone {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.pdz__icon {
+  width: 32px;
+  height: 32px;
+  color: var(--pdz-accent);
+  margin-bottom: 4px;
+}
+
+.pdz__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.pdz__link {
+  color: var(--pdz-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pdz__hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--pdz-muted);
+}
+
+/* Selected file */
+.pdz__file {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--pdz-border);
+  border-radius: var(--pdz-radius);
+  background: var(--pdz-bg);
+}
+
+.pdz__file-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 48px;
+  border-radius: 6px;
+  background: var(--pdz-error-soft);
+  color: var(--pdz-error);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.pdz__file-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pdz__file-name {
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pdz__file-size {
+  font-size: 13px;
+  color: var(--pdz-muted);
+}
+
+.pdz__file-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.pdz__btn {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--pdz-border);
+  background: var(--pdz-bg);
+  color: var(--pdz-text);
+  cursor: pointer;
+}
+
+.pdz__btn:hover:not(:disabled) {
+  border-color: var(--pdz-accent);
+  color: var(--pdz-accent);
+}
+
+.pdz__btn:focus-visible {
+  outline: 2px solid var(--pdz-accent);
+  outline-offset: 2px;
+}
+
+.pdz__btn--ghost {
+  border-color: transparent;
+  color: var(--pdz-muted);
+}
+
+.pdz__btn--ghost:hover:not(:disabled) {
+  border-color: transparent;
+  color: var(--pdz-error);
+}
+
+.pdz__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Error */
+.pdz__error {
+  min-height: 1.4em;
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--pdz-error);
+}
+
+@media (max-width: 480px) {
+  .pdz__file {
+    flex-wrap: wrap;
+  }
+  .pdz__file-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
